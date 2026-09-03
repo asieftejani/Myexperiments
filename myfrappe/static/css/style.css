@@ -1,0 +1,48 @@
+/*
+This is
+a multi-line
+comment
+*/
+
+body {
+  background-color: burlywood;
+}
+
+.form-container {
+  display: flex;
+  background-color: DodgerBlue;
+  flex-direction: row;
+}
+
+#left {
+  display: flex;
+  flex-direction: column;
+  background-color: azure;
+  justify-content: center;
+}
+
+#right {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  background-color: lightcoral;
+}
+
+
+.linkback {
+  margin-top: 50px;
+  display: inline-block;
+  color: green;
+}
+
+#subbtn{
+  height: 90px;
+}
+
+button{
+  margin-bottom: 15px;
+}
+
+#changetext {
+  overflow-wrap: break-word;
+}

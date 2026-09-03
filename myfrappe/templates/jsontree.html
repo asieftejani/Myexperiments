@@ -1,0 +1,64 @@
+
+<style>
+    #tree {
+  font-family: monospace;
+  line-height: 1.6;
+  background-color: pink;
+  }
+
+  summary {
+  cursor: pointer;
+  }
+
+  b {
+  color: #555;
+  }
+</style>
+
+
+<div id="tree"></div>
+
+<script>
+const data = {
+  name: "John",
+  age: 30,
+  address: {
+    city: "Dar es Salaam",
+    country: "Tanzania"
+  },
+  hobbies: ["coding", "football"]
+};
+
+function jsonTree(value) {
+  if (value !== null && typeof value === "object") {
+    const details = document.createElement("details");
+    details.open = true;
+
+    const summary = document.createElement("summary");
+    summary.textContent = Array.isArray(value) ? "[ ]" : "{ }";
+
+    details.appendChild(summary);
+
+    for (const key in value) {
+      const row = document.createElement("div");
+      row.style.marginLeft = "20px";
+
+      const keyEl = document.createElement("b");
+      keyEl.textContent = key + ": ";
+
+      row.appendChild(keyEl);
+      row.appendChild(jsonTree(value[key]));
+
+      details.appendChild(row);
+    }
+
+    return details;
+  }
+
+  const span = document.createElement("span");
+  span.textContent = JSON.stringify(value);
+  return span;
+}
+
+document.getElementById("tree").appendChild(jsonTree(data));
+</script>

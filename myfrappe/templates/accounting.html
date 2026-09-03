@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title> My Accounts App </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/js/eruda.js"></script>
+    <script>eruda.init();</script>
+    <script src="/static/js/sb.js?v=3" defer></script>
+  <style>
+    :root{
+      --mybg: lightblue;
+    }
+  </style>
+  </head>
+<body style="background-color: var(--mybg);">
+<h1 style="background-color: blue;">You are on the Accounting app page here</h1>
+
+<button onclick="sb_test()">Post to Supabase</button>
+
+<br>
+
+<header>
+  <h1>Ledger</h1>
+  <div class="sub"> double entry by Me</div>
+</header>
+
+<nav>
+  <button>New Entry</button>
+  <button>Balances</button>
+  <button>Report</button>
+  <button>Accounts</button>
+</nav>
+
+<main>
+  <!-- ENTRY -->
+  <form>
+    <div>
+      <h2>Record a transaction</h2>
+      <label for="tx-date">Date</label>
+      <input type="date" id="tx-date">
+      
+      
+      
+      <div>
+        <label for="tx-from">From (credit side)</label>
+        <select id="tx-from"></select>
+      </div>
+      <div>
+        <label for="tx-to">To (debit side)</label>
+        <select id="tx-to"></select>
+      </div>
+      
+      <div>
+        <label for="tx-amount">Amount</label>
+        <input type="number" id="tx-amount">
+      </div>
+      
+      
+      <label>
+        Note
+        <input type="text" id="tx-note">
+      </label>
+      
+      
+      
+      
+    </div>
+  </form>
+</main>
+
+<div>
+  <h1>IndexDB Inspector</h1>
+  <div id="dboutput">Nothing Yet</div>
+</div>
+
+<a href="/templates/dbinspector">Inspect the IndexDB</a>
+
+<br>
+<a href="/templates/jsontree">JSON Tree</a>
+
+<br>
+<a href="/templates/ledger">Original Accounts by Claude</a>
+
+<script>
+  async function showIndexDB() {
+    const output = document.getElementById("dboutput");
+    
+    const databases = await indexedDB.databases();
+    if (databases.length === 0){
+      output.innerHTML = "<p>No IndexedDB databases found.<p>"
+    }
+    
+  };
+  
+  const request = indexedDB.open("AccountingDB", 2);
+
+  request.onupgradeneeded = function (event) {
+    const db = event.target.result;
+
+    db.createObjectStore("accounts", {
+        keyPath: "x_id",
+        autoIncrement: true
+    });
+
+    console.log("Object store created");
+  };
+
+  request.onsuccess = function (event) {
+    const db = event.target.result;
+
+    console.log("Database opened:", db.name);
+  };
+
+  request.onerror = function (event) {
+    console.error("Database error:", event.target.error);
+  };
+  
+  indexedDB.databases().then(dbs => dbs.forEach(db => console.log(`${db.name} (v${db.version})`)));
+  
+  
+  
+//  showIndexDB();
+
+</script>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/js/eruda.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>eruda.init();</script>
+    <script src="/static/js/mongo.js?v=15" defer></script>
+    <link rel="stylesheet" href="/static/css/mongo.css?v=2">
+    <title>JSON and SQL Page</title>
+</head>
+<body>
+    <p>This page is for SQL and JSON databases</p>
+    <form id="dbForm">
+      <label for="db_name">Database</label>
+      <label><input type="radio" name="db_name" value="mdb">MongoDB</label>
+      <label><input type="radio" name="db_name" value="psg">PostgreSQL</label>
+      <label><input type="radio" checked name="db_name" value="lite">SQLite</label>
+      <br>
+      <label for="operation">Choose the Operation</label>
+      <select id="operation" name="operation">
+        <option value="test_con">Test Connection</option>
+        <option value="database">Database</option>
+        <option value="table">Table</option>
+        <option value="column">Column</option>
+        <option value="row">Row</option>
+      </select>
+      <input type="submit">
+    </form>
+    <div id="db-panel">
+      <div id="status">
+        <p>Database connection not tested yet</p>
+      </div>
+    </div>
+    
+    
+    <div>
+      <h1> Vanilla CSS, Bootstrap and tailwind</h1>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+      <button type="button">Simple Button</button>
+      <br>
+      <button type="button" class="btn btn-primary">Primary Button Bootstrap</button>
+      <br>
+      <button class="bg-green-600 text-white px-4 py-2 rounded">Save in Tailwind CSS</button>
+      <h1 class="text-3xl font-bold underline">
+      Hello world! </h1>
+      
+    </div>
+    
+</body>
+</html>

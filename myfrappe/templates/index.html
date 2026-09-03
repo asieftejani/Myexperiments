@@ -1,0 +1,95 @@
+<!-- This is a comment in HTML -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title> My project's page </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/js/eruda.js"></script>
+    <script>eruda.init();</script>
+    
+     <link rel="stylesheet" href="/static/css/style.css?v=101">
+    <script src="/static/js/main.js?v=105" defer></script>
+  </head>
+  
+<body>
+    <h1> Check out my projects below: - </h1>
+   
+    <br>
+     <button onclick="gotoPage()">Routing (Done)</button>
+    <select id="routeSelect">
+      <option value="/simpleurl">Simple URL</option>
+      <option value="/urlparam?name=Asief&age=47">Parameter URL</option>
+      <option value="/urljson">JSON URL</option>
+      <option value="/urlhtml">HTML URL</option>
+      <option value="/urljinja">Jinja URL</option>
+      <option value="/urldynamic/15">Dynamic URL</option>
+    </select>
+    
+    
+  
+    <form id="fetchform">
+    <div class="form-container">
+      <div id="left">
+        <label><input type="radio" name="fchoice" value="func1">Celebrate (external JS)</label>
+        <label><input type="radio" name="fchoice" value="func2">Alert from frontend</label>
+        <label><input type="radio" name="fchoice" value="func3">Run backend function</label>
+        <label><input type="radio" name="fchoice" value="func4">Crash backend</label>
+        <label><input type="radio" name="fchoice" value="func5">External API</label>
+      </div>
+      <div id="right">
+        <button type="submit" id="subbtn">Javascript &amp; Fetch (WIP) </button>
+        <br>
+        <!-- results appear here -->
+        <p id="changetext" style="word-wrap:break-word;text-align:center;color:blue;">Rex</p>
+      </div>
+      </div>
+    </form>
+    
+    <br>
+    <form id="textfile" method="POST" action="/add-files">
+      <label>Full Name:</label>
+      <input type="text" name="fname" id="fname" value="John Doe">
+      <br>
+      <label>Date and Time</label>
+      <input type="datetime-local" name="dtstamp" id="dtstamp">
+      <br>
+      <textarea id="editor" name="editor" rows=10 style="width:100%; overflow-y:auto; resize:vertical;"></textarea>
+      <button type="submit">Show the above HTML</button>
+      <button type="submit" formaction="/replace-files">Post changes above</button>
+    </form>
+   
+       <br>
+    <a href="/templates/about"><button>About</button></a>
+    
+    <br>
+    <a href="/templates/jsontree"><button>Json Tree CRUD (WIP)</button></a>
+    
+    <br>
+    <a href="/templates/database"><button>Database (SQL CRUD)</button></a>
+    
+    <br>
+    <a href="/templates/accounting"><button>Accounting (Pending)</button></a>
+  
+    <br>
+    <button>mini-ERP (Pending)</button>
+    
+    <br>
+    <button>ET Loan Fund (Pending)</button>
+    
+    <br>
+    <button>Holy Quran (Pending)</button>
+    
+    <br>
+    <button>Translation (Pending)</button>
+    
+    <br>
+    <button>Family Tree with dates (Pending)</button>
+
+    <br>
+    <button>Daily hadith (Pending)</button>
+
+</body>
+
+</html>

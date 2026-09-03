@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IndexedDB Inspector</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .database {
+            margin-bottom: 20px;
+        }
+
+        .database h2 {
+            margin-bottom: 10px;
+        }
+
+        .store {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>IndexedDB Inspector</h1>
+
+    <div id="output"></div>
+
+
+    <script>
+
+        async function showIndexedDB() {
+
+            const output = document.getElementById("output");
+
+            // Get all IndexedDB databases
+            const databases = await indexedDB.databases();
+
+            if (databases.length === 0) {
+                output.innerHTML = "<p>No IndexedDB databases found.</p>";
+                return;
+            }
+
+            for (const database of databases) {
+
+                // Open the database
+                const request = indexedDB.open(database.name);
+
+                request.onsuccess = function () {
+
+                    const db = request.result;
+
+                    // Create database section
+                    const databaseDiv = document.createElement("div");
+                    databaseDiv.className = "database";
+
+                    databaseDiv.innerHTML = `
+                        <h2>
+                            Database: ${db.name}
+                        </h2>
+                    `;
+
+                    // Get object stores
+                    const stores = [...db.objectStoreNames];
+
+                    if (stores.length === 0) {
+
+                        databaseDiv.innerHTML +=
+                            "<p>No object stores.</p>";
+
+                    } else {
+
+                        for (const storeName of stores) {
+
+                            const storeDiv =
+                                document.createElement("div");
+
+                            storeDiv.className = "store";
+
+                            storeDiv.textContent =
+                                "📋 " + storeName;
+
+                            databaseDiv.appendChild(storeDiv);
+                        }
+                    }
+
+                    output.appendChild(databaseDiv);
+
+                    db.close();
+                };
+
+                request.onerror = function () {
+                    console.error(
+                        "Could not open database:",
+                        database.name
+                    );
+                };
+            }
+        }
+
+        showIndexedDB();
+
+    </script>
+
+</body>
+</html>

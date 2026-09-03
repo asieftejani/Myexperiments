@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File CRUD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; }
+    select, textarea, input, button { width: 100%; padding: 8px; margin: 8px 0; box-sizing: border-box; }
+    button { background: #4CAF50; color: white; border: none; cursor: pointer; }
+    button:hover { background: #45a049; }
+    .starthide { display: none; }
+    #result { background: blue; padding: 10px; margin-top: 15px; white-space: pre-wrap; }
+    /* how to comment in css */
+  </style>
+</head>
+<body>
+  <h2>CRUD Operations on database</h2>
+  
+  <!-- how to comment in html -->
+  <form method="post" action="/database"> 
+  <label> First choose the level</label>
+  <br>
+  <select name="flask_ftcr" id="js_ftcr">
+    <option value="file">File</option>
+    <option selected value="table">Table</option>
+    <option value="column">Columns</option>
+    <option value="rows">Rows</option>
+  </select>
+
+  <label for="crud_operation">Choose a CRUD option:</label>
+  <select name="operation_flask" id="operation" onchange="toggleFields()">
+    <option value="">-- Select --</option>
+    <option value="create">Create</option>
+    <option selected value="read">Read</option>
+    <option value="update">Update</option>
+    <option value="delete">Delete</option>
+  </select>
+
+  <div id="fileFields" class="starthide">
+    <label>Filename:</label>
+    <input type="text" name="flask_file" id="filename" placeholder="e.g. data.txt" value="data.db">
+    
+    <div id="contentField" class="starthide">
+      <label>Content:</label>
+      <textarea name="content_flask" id="content" rows="6" placeholder="Enter file content..."></textarea>
+    </div>
+    
+    <button onclick="performAction()">Submit Now</button>
+  </div>
+
+  <div id="result">
+    <label>Result</label>
+  </div>
+  </form>
+  
+  <br>
+  <button><a href="/templates/mydb">My DB</a></button>
+  
+  <br>
+  <button><a href="/templates/dbinspector">Indexed  Inspector</a></button>
+  
+  <script>
+    /*
+    multi
+    line
+    comment
+    in js
+    */
+    // vs single line comment in js //
+    
+    function toggleFields() {
+      const op = document.getElementById('operation').value;
+      const fileFields = document.getElementById('fileFields');
+      const contentField = document.getElementById('contentField');
+      
+      if (!op) {
+        fileFields.classList.add('myhidden');
+        return;
+      }
+      fileFields.classList.remove('myhidden');
+      
+      
+      // Only show content box for create and update
+      if (op === 'create' || op === 'update') {
+        contentField.classList.remove('hidden');
+      } else {
+        contentField.classList.add('hidden');
+      }
+    }
+
+    function performAction() {
+      const op = document.getElementById('operation').value;
+      const filename = document.getElementById('filename').value;
+      const content = document.getElementById('content').value;
+      const result = document.getElementById('result');
+      
+      if (!filename) {
+        result.textContent = 'Please enter a filename';
+        return;
+      }
+
+      let message = `Operation: ${op.toUpperCase()}\nFilename: ${filename}`;
+      
+      switch(op) {
+        case 'create':
+          message += `\nContent: ${content}\n\nThis would CREATE the file with this content.`;
+          break;
+        case 'read':
+          message += `\n\nThis would READ and display the file content.`;
+          break;
+        case 'update':
+          message += `\nNew Content: ${content}\n\nThis would UPDATE the file.`;
+          break;
+        case 'delete':
+          message += `\n\nThis would DELETE the file.`;
+          break;
+      }
+      
+      result.textContent = message + '\n\nNote: Real file operations need a backend like Node.js or PHP.';
+    }
+  </script>
+</body>
+</html>
