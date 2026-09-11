@@ -80,13 +80,13 @@ def myapplication(request):
     
   elif request.path == "/add-files" and request.method == "POST":
     render_html(request, "/files", "a")
-    return render_html(request, "/files", "r")
+    return render_html(request, "/templates/files", "r")
     
   elif request.path == "/read-files":
     return render_html(request, "/templates/files", "r")
     
   elif request.path == "/replace-files":
-    render_html(request, "/files", "w")
+    render_html(request, "/templates/files", "w")
     return render_html(request, "/files", "r")
   
   elif request.path == "/json_page":
