@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title> VsCode page </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/js/eruda.js"></script>
+    <script>eruda.init();</script>
+    
+     <link rel="stylesheet" href="/static/css/style.css?v=101">
+    <script src="/static/js/main.js?v=105" defer></script>
+  </head>
+
+
+
+<body>
+  <h1> Github Page</h1>
+  <button onclick="get_github_json()">Get Github Raw Data</button>
+  <br>
+  <label for="repo">Repository:</label>
+  <select id="repo">
+    <option value="">Select a repository</option>
+  </select>
+  <br><br>
+  <label for="codespace">Codespace</label>
+  <select id="codespace" disabled>
+    <option value="">Select a codespace</option>
+  </select>
+  
+  <ul id="json_p">The Raw Data</ul>
+  
+  
+  
+  
+  
+</body>
+
+  <script>
+    
+    
+    async function get_github_json() {
+      const response = await fetch("/github_user"
+        );
+      const data = await response.json();
+      
+      // display JSON
+      const list = document.getElementById("json_p");
+      display_json(data, list)
+      
+          // Repo and codespace buttons
+    
+      const repoSelect = document.getElementById("repo")
+      const codespaceSelect = document.getElementById("codespace")
+    
+    // Populate repositories
+      data.repo_data.forEach(repo => {
+        const option = document.createElement("option");
+        option.value = repo.name;
+        option.textContent = repo.name;
+      
+        repoSelect.appendChild(option);
+      });
+    
+    // when repository changes
+    
+      repoSelect.addEventListener("change", () => {
+      // clear previous codespaces
+        codespaceSelect.innerHTML = `<option value="">Select a codespace</option>`;
+      
+        const selectedRepo = data.repo_data.find( repo => repo.name === repoSelect.value);
+        if (!selectedRepo) {
+        codespaceSelect.disabled = true;
+        return;
+        }
+      
+      // add codespaces belonging to the previous repo
+        selectedRepo.codespaces.codespaces.forEach(codespace => {
+          const option = document.createElement("option");
+          option.value = codespace.name;
+          option.textContent = codespace.name;
+        
+          codespaceSelect.appendChild(option);
+        });
+      
+        codespaceSelect.disabled = false;
+      });
+    } 
+      
+      
+    
+    function display_json(obj, list) {
+      for (const [key, value] of Object.entries(obj))
+      {
+        const li = document.createElement("li");
+        
+        if (typeof value === "object" && value !== null) {
+          li.textContent = key;
+          
+          const sublist = document.createElement("ul");
+          li.appendChild(sublist);
+          
+          display_json(value, sublist);
+        }
+        
+        else {
+          li.textContent = `${key}: ${value}`;
+        }
+        list.appendChild(li);
+      }
+    }
+    
+  </script>
+</html>
