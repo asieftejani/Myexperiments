@@ -105,3 +105,42 @@ DEBUG:httpcore.http2:receive_response_body.started request=<Request [b'GET']> st
 DEBUG:httpcore.http2:receive_response_body.complete
 DEBUG:httpcore.http2:response_closed.started stream_id=1
 DEBUG:httpcore.http2:response_closed.complete
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /user HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /user HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /user/repos HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/asieftejani/Frappe-Manager/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/asieftejani/fxshop/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/asieftejani/Myexperiments/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /user HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /user/repos HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/asieftejani/Frappe-Manager/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/asieftejani/fxshop/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/asieftejani/Myexperiments/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/Goodvantage/payrexx_integration/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/OpenNGO-Project/Frappe-Docker-Setup/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/OpenNGO-Project/non_profit/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/SpendeDirekt/good_connector/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/SpendeDirekt/good_demo/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/SpendeDirekt/good_help/codespaces HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.github.com:443
+DEBUG:urllib3.connectionpool:https://api.github.com:443 "GET /repos/SpendeDirekt/good_npo/codespaces HTTP/1.1" 200 None

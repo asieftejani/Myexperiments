@@ -64,7 +64,10 @@ def myapplication(request):
     print(db_name + " - " + operation, flush=True)
     return Response(db_name)
 
-
+  elif request.path == "/github_user" and request.method == "GET":
+    from myfrappe.pyfiles.github import github_json
+    data = github_json()
+    return Response(json.dumps(data), content_type="application/json")
 
 
   elif request.path == "/run-task" and request.method == "POST":
